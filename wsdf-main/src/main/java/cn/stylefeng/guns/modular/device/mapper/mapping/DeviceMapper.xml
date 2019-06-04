@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.device.mapper.DeviceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.device.entity.Device">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="device_id" property="deviceId" />
+        <result column="user_id" property="userId" />
+        <result column="mac" property="mac" />
+        <result column="status" property="status" />
+        <result column="wsp_id" property="wspId" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_by" property="createBy" />
+        <result column="update_by" property="updateBy" />
+        <result column="type" property="type" />
+        <result column="belong_id" property="belongId" />
+        <result column="event_count" property="eventCount" />
+        <result column="device_batch" property="deviceBatch" />
+        <result column="is_assign" property="isAssign" />
+        <result column="prefix" property="prefix" />
+        <result column="prefix_number" property="prefixNumber" />
+        <result column="temp_dept_id" property="tempDeptId" />
+        <result column="test_count" property="testCount" />
+        <result column="default_count" property="defaultCount" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id AS "id", name AS "name", device_id AS "deviceId", user_id AS "userId", mac AS "mac", status AS "status", wsp_id AS "wspId", create_time AS "createTime", update_time AS "updateTime", create_by AS "createBy", update_by AS "updateBy", type AS "type", belong_id AS "belongId", event_count AS "eventCount", device_batch AS "deviceBatch", is_assign AS "isAssign", prefix AS "prefix", prefix_number AS "prefixNumber", temp_dept_id AS "tempDeptId", test_count AS "testCount", default_count AS "defaultCount", version AS "version"
+    </sql>
+
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.device.model.result.DeviceResult" parameterType="cn.stylefeng.guns.modular.device.model.params.DeviceParam">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_device where 1 = 1
+            <if test="paramCondition.deviceId != null and paramCondition.deviceId != ''">
+                and deviceId like CONCAT('%',#{paramCondition.deviceId},'%')
+            </if>
+            <if test="paramCondition.userId != null and paramCondition.userId != ''">
+                and userId like CONCAT('%',#{paramCondition.userId},'%')
+            </if>
+            <if test="paramCondition.mac != null and paramCondition.mac != ''">
+                and mac like CONCAT('%',#{paramCondition.mac},'%')
+            </if>
+            <if test="paramCondition.status != null and paramCondition.status != ''">
+                and status like CONCAT('%',#{paramCondition.status},'%')
+            </if>
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.device.model.params.DeviceParam">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_device where 1 = 1
+            <if test="paramCondition.deviceId != null and paramCondition.deviceId != ''">
+                and deviceId like CONCAT('%',#{paramCondition.deviceId},'%')
+            </if>
+            <if test="paramCondition.userId != null and paramCondition.userId != ''">
+                and userId like CONCAT('%',#{paramCondition.userId},'%')
+            </if>
+            <if test="paramCondition.mac != null and paramCondition.mac != ''">
+                and mac like CONCAT('%',#{paramCondition.mac},'%')
+            </if>
+            <if test="paramCondition.status != null and paramCondition.status != ''">
+                and status like CONCAT('%',#{paramCondition.status},'%')
+            </if>
+    </select>
+
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.device.model.result.DeviceResult" parameterType="cn.stylefeng.guns.modular.device.model.params.DeviceParam">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_device where 1 = 1
+        <if test="paramCondition.deviceId != null and paramCondition.deviceId != ''">
+            and deviceId like CONCAT('%',#{paramCondition.deviceId},'%')
+        </if>
+        <if test="paramCondition.userId != null and paramCondition.userId != ''">
+            and userId like CONCAT('%',#{paramCondition.userId},'%')
+        </if>
+        <if test="paramCondition.mac != null and paramCondition.mac != ''">
+            and mac like CONCAT('%',#{paramCondition.mac},'%')
+        </if>
+        <if test="paramCondition.status != null and paramCondition.status != ''">
+            and status like CONCAT('%',#{paramCondition.status},'%')
+        </if>
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.device.model.params.DeviceParam">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_device where 1 = 1
+            <if test="paramCondition.deviceId != null and paramCondition.deviceId != ''">
+                and deviceId like CONCAT('%',#{paramCondition.deviceId},'%')
+            </if>
+            <if test="paramCondition.userId != null and paramCondition.userId != ''">
+                and userId like CONCAT('%',#{paramCondition.userId},'%')
+            </if>
+            <if test="paramCondition.mac != null and paramCondition.mac != ''">
+                and mac like CONCAT('%',#{paramCondition.mac},'%')
+            </if>
+            <if test="paramCondition.status != null and paramCondition.status != ''">
+                and status like CONCAT('%',#{paramCondition.status},'%')
+            </if>
+    </select>
+
+</mapper>
